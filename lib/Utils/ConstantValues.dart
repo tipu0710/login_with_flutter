@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldStyle {
-  Widget textWidget(String hint, int borderColor, Icon icon) {
+  Widget textWidget(String hint, int borderColor, Icon icon, TextInputType type, {bool obscureText=false}) {
     return new TextFormField(
+      obscureText:true,
       decoration: InputDecoration(
         prefixIcon: IconButton(icon: icon, onPressed: null),
         hintText: hint,
@@ -20,7 +21,8 @@ class TextFieldStyle {
           borderSide: BorderSide(width: 1, color: Color(borderColor)),
         ),
       ),
-      style: new TextStyle(color: Color(borderColor)),
+      style: new TextStyle(color: Color(borderColor),),
+      keyboardType: type,
     );
   }
 }

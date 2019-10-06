@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:login_with_flutter/UI/WelcomePageUi.dart';
 import 'package:login_with_flutter/Utils/AllColor.dart' as constColors;
 import 'package:login_with_flutter/anim/EnterExitAnim.dart';
+import 'package:login_with_flutter/anim/ScaleTransition.dart';
 
 import 'LoginTextField.dart';
 import 'SignupUi.dart';
@@ -41,15 +43,18 @@ class LoginPage extends StatelessWidget {
             right: 112,
             height: 43,
             width: 136,
-            child: RaisedButton(
-              onPressed: () {},
-              color: Color(constColors.loginButtonColor),
-              child: Text(
-                "Login",
-                style: TextStyle(color: Colors.white),
-              ),
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(15.0),
+
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(context, ScaleRoute(page: WelcomePage()));
+                },
+                color: Color(constColors.loginButtonColor),
+                child: Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white),
+                ),
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
               ),
             ),
           ),

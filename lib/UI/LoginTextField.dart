@@ -16,7 +16,7 @@ class _TextWidget extends State<TextController>{
     return Center(
       child: Container(
         child: TextFieldStyle().textWidget("Phone number",
-            constColors.loginBorderColor, Icon(Icons.phone_android)),
+            constColors.loginBorderColor, Icon(Icons.phone_android), TextInputType.phone),
         width: 250,
         height: 55,
         margin: EdgeInsets.only(top: 150),

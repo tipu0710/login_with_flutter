@@ -38,19 +38,10 @@ class _SignUpState extends State<SignUpPage> {
             ),
           ),
 
-          //TextFields
-          SignUpTextController(true),
           //phone number
-          SignUpTextController(false),
-          Center(
-            child: Container(
-              child: TextFieldStyle().textWidget("Phone Number",
-                  constColors.loginBorderColor, Icon(Icons.phone_android)),
-              width: 250,
-              height: 55,
-              margin: EdgeInsets.only(top: 185),
-            ),
-          ),
+          new SignUpTextController(true),
+          //password
+          new SignUpTextController(false),
 
           //signup button
           Positioned(
@@ -77,9 +68,12 @@ class _SignUpState extends State<SignUpPage> {
             left: -40,
             height: 71,
             width: 172,
-            child: GestureDetector(onTap:() {
-              Navigator.pop(context);
-            },child: Image.asset("images/login.png")),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset("images/login.png"),
+            ),
           ),
 
           //,or text

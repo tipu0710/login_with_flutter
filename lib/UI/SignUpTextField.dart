@@ -20,11 +20,11 @@ class _TextNameWidget extends State<SignUpTextController>{
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        child: TextFieldStyle().textWidget("Name",
-            constColors.signUpNameBorderColor, Icon(Icons.perm_identity)),
+        child: TextFieldStyle().textWidget("Password",
+            constColors.signUpNameBorderColor, Icon(Icons.vpn_key), TextInputType.text, obscureText: true),
         width: 250,
         height: 55,
-        margin: EdgeInsets.only(top: 45),
+        margin: EdgeInsets.only(top: 185),
       ),
     );
 
@@ -38,10 +38,10 @@ class _TextPhoneWidget extends State<SignUpTextController>{
     return Center(
       child: Container(
         child: TextFieldStyle().textWidget("Phone Number",
-            constColors.loginBorderColor, Icon(Icons.phone_android)),
+            constColors.loginBorderColor, Icon(Icons.phone_android), TextInputType.phone),
         width: 250,
         height: 55,
-        margin: EdgeInsets.only(top: 185),
+        margin: EdgeInsets.only(top: 45),
       ),
     );
   }

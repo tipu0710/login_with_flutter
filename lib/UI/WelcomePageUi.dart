@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_with_flutter/Utils/AllColor.dart' as constColors;
+import 'package:login_with_flutter/anim/ScaleTransition.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -42,7 +43,9 @@ class WelcomePage extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: 30),
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     color: Color(constColors.welcomeButtonColor),
                     child: Text(
                       "Logout",

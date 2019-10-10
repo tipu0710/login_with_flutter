@@ -9,4 +9,9 @@ final int signUpButtonColor = int.parse("#72EFE2".replaceAll('#', '0xff'));
 final int orColor = int.parse("#6338A1".replaceAll('#', '0xff'));
 final int welcomeColor = int.parse("#DF607F".replaceAll('#', '0xff'));
 final int welcomeButtonColor = int.parse("#251A51".replaceAll('#', '0xff'));
+final int errorColor = int.parse("#FF8181".replaceAll('#', '0xff'));
+final int dialogTextColor = int.parse("#57B6FF".replaceAll('#', '0xff'));
+final int dialogButtonColor = int.parse("#FCE485".replaceAll('#', '0xff'));
+final int passwordColor = int.parse("#57B6FF".replaceAll('#', '0xff'));
+final int dialogColor = int.parse("#FFBF8E".replaceAll('#', '0xff'));
 

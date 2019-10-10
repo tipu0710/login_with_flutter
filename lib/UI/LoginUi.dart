@@ -1,112 +1,89 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:login_with_flutter/UI/WelcomePageUi.dart';
+import 'package:flutter/services.dart';
 import 'package:login_with_flutter/Utils/AllColor.dart' as constColors;
-import 'package:login_with_flutter/anim/EnterExitAnim.dart';
-import 'package:login_with_flutter/anim/ScaleTransition.dart';
+import 'package:login_with_flutter/login/facebookSignIn.dart';
+import 'package:login_with_flutter/login/googleSignIn.dart';
 
-import 'LoginTextField.dart';
-import 'SignupUi.dart';
+import 'LoginStateFullWidget.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          //background line
-          Image.asset(
-            "images/login_curves_back.png",
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
-          ),
-          Center(
-            child: Container(
-              //computer icon
-              child: Image.asset(
-                "images/login_icon.png",
-                width: 295.41,
-                height: 217.94,
-              ),
-              margin: EdgeInsets.only(top: 0),
-              padding: EdgeInsets.only(bottom: 250),
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
+        body: Stack(
+          children: <Widget>[
+            //background line
+            Image.asset(
+              "images/login_curves_back.png",
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
             ),
-          ),
-
-          //TextFiled
-          TextController(),
-
-          //LoginButton
-          Positioned(
-            top: 454,
-            right: 112,
-            height: 43,
-            width: 136,
-
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(context, ScaleRoute(page: WelcomePage()));
-                },
-                color: Color(constColors.loginButtonColor),
-                child: Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white),
+            Center(
+              child: Container(
+                //computer icon
+                child: Image.asset(
+                  "images/login_icon.png",
+                  width: 295.41,
+                  height: 217.94,
                 ),
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(15.0),
+                margin: EdgeInsets.only(top: 0),
+                padding: EdgeInsets.only(bottom: 250),
               ),
             ),
-          ),
 
-          //sign up button
-          Positioned(
-            top: 548,
-            left: 228,
-            height: 71,
-            width: 172,
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      EnterExitRoute(exitPage: this, enterPage: SignUpPage())
-                  );
-                },
-                child: Image.asset("images/signup.png")),
-          ),
+            //TextFiled
+            LoginStateFullWidget(),
 
-          //google icon
-          Positioned(
-            top: 562,
-            left: 118.53,
-            height: 42.65,
-            width: 42.65,
-            child: Image.asset("images/google.png"),
-          ),
+            //sign up button
+            /*Positioned(
+              top: 548,
+              left: 228,
+              height: 71,
+              width: 172,
+              child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        EnterExitRoute(exitPage: this, enterPage: SignUpPage()));
+                  },
+                  child: Image.asset("images/signup.png")),
+            ),*/
 
-          //facebook icon
-          Positioned(
-            top: 562,
-            left: 62.47,
-            height: 42.65,
-            width: 42.65,
-            child: Image.asset("images/facebook.png"),
-          ),
+            //google icon
+            Positioned(
+                top: 539,
+                left: 187.05,
+                height: 42.65,
+                width: 42.65,
+                child: SignInByGoogle()),
 
-          //,or text
-          Positioned(
-            top: 572,
-            left: 28,
-            child: Text(
-              ",or",
-              style: TextStyle(color: Color(constColors.orColor), fontSize: 18),
+            //facebook icon
+            Positioned(
+                top: 539,
+                left: 131,
+                height: 42.65,
+                width: 42.65,
+                child: FacebookSignIn()),
+
+            //,or text
+            Positioned(
+              top: 548,
+              left: 97,
+              child: Text(
+                ",or",
+                style: TextStyle(color: Color(constColors.orColor), fontSize: 18),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
-
+  Future<bool> _onBackPressed() async {
+    // Your back press code here...
+    return SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  }
 }
-
-
